@@ -20,7 +20,7 @@ namespace Task2._2
             {
                 text.Add(str);
             }
-            //text = File.ReadAllLines(@"D:\Yauheniy_Kisialiou\task2_2.txt").ToList<string>();
+
             List<string> parsedText = new List<string>();
             int _integer = 0;
             int _double = 0;
@@ -30,8 +30,7 @@ namespace Task2._2
             string textDouble = null;
             foreach (var line in text)
             {
-                //Console.WriteLine(item);
-                //pr.ParseString(item);
+
                 int resultInt;
                 double resultDouble;
                 char[] seps = { ',' ,' ', '!', '?' ,'\n'};
@@ -42,7 +41,7 @@ namespace Task2._2
                     if (Int32.TryParse(piece, out resultInt))
                     {
                         _integer++;
-                        textInt += resultInt.ToString().PadLeft(13) + "\n";
+                        textInt += resultInt.ToString().PadLeft(17) + "\n";
                         sumInt += resultInt;
                     }
                     else
@@ -50,7 +49,7 @@ namespace Task2._2
                         if (Double.TryParse(piece, out resultDouble))
                         {
                             _double++;
-                            textDouble += resultDouble.ToString("F", CultureInfo.InvariantCulture).PadLeft(13) + "\n";
+                            textDouble += resultDouble.ToString("F", CultureInfo.InvariantCulture).PadLeft(17) + "\n";
                             sumDouble += resultDouble;
                         }
                         else
@@ -64,19 +63,12 @@ namespace Task2._2
             }
             Console.WriteLine($"integer: {_integer}");
             Console.WriteLine($"double: {_double}");
-            textInt += "Average" +(sumInt / _integer).ToString("F", CultureInfo.InvariantCulture).PadLeft(6);
-            textDouble += "Average" +(sumDouble / _double).ToString("F", CultureInfo.InvariantCulture).PadLeft(6);
+            textInt += "Average" +(sumInt / _integer).ToString("F", CultureInfo.InvariantCulture).PadLeft(10);
+            textDouble += "Average" +(sumDouble / _double).ToString("F", CultureInfo.InvariantCulture).PadLeft(10);
             Console.WriteLine(textInt);
             Console.WriteLine(textDouble);
 
-            //parsedText.Sort();
-            //foreach (var item in parsedText)
-            //{
-            //    Console.WriteLine(item);
-            //}
-            //Console.ReadLine();
-
-            parsedText = pr.sortList(parsedText);
+            parsedText = pr.SortList(parsedText);
             foreach (var item in parsedText)
             {
                 Console.WriteLine(item);
@@ -84,34 +76,17 @@ namespace Task2._2
 
         }
 
-        List<string> sortList(List<string> parsedText)
+        private List<string> SortList(List<string> parsedText)
         {
-            for (int i = 0; i < parsedText.Count; i++)
-            {
-                int min = parsedText[i].Length;
-                int iMin = i;
-                for (int j = i + 1; j < parsedText.Count; j++)
-                {
-                    if (parsedText[j].Length < min)
-                    {
-                        string temp = parsedText[i];
-                        min = parsedText[j].Length;
-                        iMin = j;
-                        parsedText[i] = temp;
-                    }
-                }
-                if (i != iMin)
-                {
-
-                    string temp = parsedText[i];
-
-                    parsedText[i] = parsedText[iMin];
-
-                    parsedText[iMin] = temp;
-                }
-            }
+            parsedText.Sort(MagicComparer);
             return parsedText;
-            
         }
+
+        static int MagicComparer(String s1, String s2)
+        {
+            int cmp = s1.Length.CompareTo(s2.Length);
+            return cmp == 0 ? s1.CompareTo(s2) : cmp;
+        }
+
     }
 }
