@@ -1,0 +1,6 @@
+c:\users\yauheniy_kisialiou\documents\visual studio 2015\Projects\Task3\Restaurant\bin\Debug\Restaurant.exe.config
+c:\users\yauheniy_kisialiou\documents\visual studio 2015\Projects\Task3\Restaurant\bin\Debug\Restaurant.exe
+c:\users\yauheniy_kisialiou\documents\visual studio 2015\Projects\Task3\Restaurant\bin\Debug\Restaurant.pdb
+c:\users\yauheniy_kisialiou\documents\visual studio 2015\Projects\Task3\Restaurant\obj\Debug\Restaurant.exe
+c:\users\yauheniy_kisialiou\documents\visual studio 2015\Projects\Task3\Restaurant\obj\Debug\Restaurant.pdb
+C:\Users\Yauheniy_Kisialiou\documents\visual studio 2015\Projects\Task3\Restaurant\obj\Debug\Restaurant.csprojResolveAssemblyReference.cache
